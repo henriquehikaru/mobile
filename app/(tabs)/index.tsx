@@ -5,9 +5,14 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Página Inicial</Text>
-      <Link href="app/toDoList" style={styles.button}>
-        Go to about screen
+      <Link href="/toDoList" style={styles.button}>
+        Lista
       </Link>
+
+      <Link href="/about" style={styles.button}>
+        About
+      </Link>
+
     </View>
   );
 }
