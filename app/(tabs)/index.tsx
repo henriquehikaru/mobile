@@ -23,6 +23,11 @@ export default function Index() {
           <Text style={styles.secondaryText}>Sobre</Text>
         </TouchableOpacity>
       </Link>
+
+      <Link href="/about" style={styles.button}>
+        About
+      </Link>
+
     </View>
   );
 }
