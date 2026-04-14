@@ -5,7 +5,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Página Inicial</Text>
-      <Link href="/about" style={styles.button}>
+      <Link href="app/toDoList" style={styles.button}>
         Go to about screen
       </Link>
     </View>
