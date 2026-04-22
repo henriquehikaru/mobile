@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
 
-const PlaceholderImage = '/assets/images/logo.png';
+const PlaceholderImage = require('/assets/images/logo.png');
 
 export default function Index() {
   return (
