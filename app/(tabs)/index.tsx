@@ -1,17 +1,16 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
+import ImageViewer from "@/components/ImageViewer";
 
-const PlaceholderImage = require('/assets/images/logo.png');
+const PlaceholderImage = require('@/assets/images/logo.png');
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={PlaceholderImage} style={styles.image} />
+        <ImageViewer imgSource={PlaceholderImage} />
       </View>
-
-      <Text style={styles.logo}>Delivery</Text>
 
       <Link href="/toDoList" asChild>
         <TouchableOpacity style={styles.button}>
