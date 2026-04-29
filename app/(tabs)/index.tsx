@@ -3,14 +3,6 @@ import { Image } from 'expo-image';
 import { Link } from 'expo-router';
 import ImageViewer from "@/components/ImageViewer";
 
-<<<<<<< HEAD
-export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Página Inicial</Text>
-      <Link href="/toDoList" style={styles.button}>
-        Lista
-=======
 const PlaceholderImage = require('@/assets/images/logo.png');
 
 export default function Index() {
@@ -24,7 +16,6 @@ export default function Index() {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Ver Lista</Text>
         </TouchableOpacity>
->>>>>>> 2d01f2d (Implementacao de ImageViewer.)
       </Link>
 
       <Link href="/about" asChild>
