@@ -1,7 +1,5 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { Image } from 'expo-image';
 import { Link } from 'expo-router';
-import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
 
 const PlaceholderImage = require('@/assets/images/logo.png');
@@ -9,78 +7,94 @@ const PlaceholderImage = require('@/assets/images/logo.png');
 export default function Index() {
   return (
     <View style={styles.container}>
+
       <View style={styles.imageContainer}>
         <ImageViewer imgSource={PlaceholderImage} />
+        <Text style={styles.logo}></Text>
       </View>
 
       <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose a photo" />
-        <Button label="Use this photo" />
+
+        <Link href="/cartScreen" asChild>
+          <TouchableOpacity style={styles.primaryButton}>
+            <Text style={styles.primaryText}>Ver Carrinho</Text>
+          </TouchableOpacity>
+        </Link>
+
+        <Link href="/toDoList" asChild>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Lista de Tarefas</Text>
+          </TouchableOpacity>
+        </Link>
+
+        <Link href="/about" asChild>
+          <TouchableOpacity style={styles.secondaryButton}>
+            <Text style={styles.secondaryText}>Sobre</Text>
+          </TouchableOpacity>
+        </Link>
+
       </View>
-
-      <Link href="/toDoList" asChild>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Ver Lista</Text>
-        </TouchableOpacity>
-      </Link>
-
-      <Link href="/about" asChild>
-        <TouchableOpacity style={styles.secondaryButton}>
-          <Text style={styles.secondaryText}>Sobre</Text>
-        </TouchableOpacity>
-      </Link>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: '#EA1D2C',
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 20,
+    justifyContent: 'space-between',
   },
 
   imageContainer: {
-    flex: 1,
-  },
-  image: {
-    width: 320,
-    height: 440,
-    borderRadius: 18,
+    alignItems: 'center',
+    marginTop: 40,
   },
 
   logo: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 40,
+    marginTop: 20,
+  },
+
+  footerContainer: {
+    width: '100%',
+  },
+
+  primaryButton: {
+    backgroundColor: '#000',
+    padding: 15,
+    borderRadius: 12,
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+
+  primaryText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 
   button: {
     backgroundColor: '#fff',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
+    padding: 15,
     borderRadius: 12,
-    marginBottom: 15,
-    width: '100%',
+    marginBottom: 10,
     alignItems: 'center',
   },
 
   buttonText: {
     color: '#EA1D2C',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 
   secondaryButton: {
     borderWidth: 2,
     borderColor: '#fff',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
+    padding: 15,
     borderRadius: 12,
-    width: '100%',
     alignItems: 'center',
   },
 
@@ -88,10 +102,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
-  },
-
-  footerContainer: {
-    flex: 1 / 3,
-    alignItems: 'center',
   },
 });
