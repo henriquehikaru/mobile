@@ -1,35 +1,75 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'expo-router';
-import ImageViewer from "@/components/ImageViewer";
+import ImageViewer from '@/components/ImageViewer';
+
+import * as ImagePicker from 'expo-image-picker';
+import { useState } from 'react';
 
 const PlaceholderImage = require('@/assets/images/logo.png');
 
 export default function Index() {
+
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
+
+  const pickImageAsync = async () => {
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    } else {
+      alert('Você não selecionou nenhuma imagem.');
+    }
+  };
+
   return (
     <View style={styles.container}>
 
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage} />
-        <Text style={styles.logo}></Text>
+
+        <ImageViewer
+          imgSource={PlaceholderImage}
+          selectedImage={selectedImage}
+        />
+
       </View>
 
       <View style={styles.footerContainer}>
 
+        <TouchableOpacity
+          style={styles.button}
+          onPress={pickImageAsync}
+        >
+          <Text style={styles.buttonText}>
+            Escolher imagem
+          </Text>
+        </TouchableOpacity>
+
         <Link href="/cartScreen" asChild>
           <TouchableOpacity style={styles.primaryButton}>
-            <Text style={styles.primaryText}>Ver Carrinho</Text>
+            <Text style={styles.primaryText}>
+              Ver Carrinho
+            </Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/toDoList" asChild>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Lista de Tarefas</Text>
+            <Text style={styles.buttonText}>
+              Lista de Tarefas
+            </Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/about" asChild>
           <TouchableOpacity style={styles.secondaryButton}>
-            <Text style={styles.secondaryText}>Sobre</Text>
+            <Text style={styles.secondaryText}>
+              Sobre
+            </Text>
           </TouchableOpacity>
         </Link>
 
@@ -39,6 +79,7 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#EA1D2C',
@@ -49,13 +90,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     alignItems: 'center',
     marginTop: 40,
-  },
-
-  logo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginTop: 20,
   },
 
   footerContainer: {
@@ -103,4 +137,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+
 });
